@@ -27,6 +27,26 @@ numba==0.56.3
 scikit-image==0.20.0
 ```
 
+## Demo
+
+### Option 1: Streamlit
+Interacitve mode to draw masks. Need to install streamlit
+```
+pip install streamlit streamlit-drawable-canvas
+```
+run
+```
+streamlit run predict_part_web.py CKPT
+```
+
+### Option 2: 
+run
+```
+python predict_part.py CKPT --input IMG_RGBA_1 IMG_RGBA_2
+```
+Output images are located at demo/outputs if not specified.
+
+
 ## License
 
 Shield: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
