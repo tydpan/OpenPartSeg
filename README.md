@@ -53,6 +53,8 @@ Shield: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](h
 
 The majority of OPS is licensed under a [MIT License](LICENSE).
 
+However portions of the project are available under separate license terms: Swin-Transformer-Semantic-Segmentation is licensed under the [MIT license](https://github.com/SwinTransformer/Swin-Transformer-Semantic-Segmentation/blob/main/LICENSE), Deformable-DETR is licensed under the [Apache-2.0 License](https://github.com/fundamentalvision/Deformable-DETR/blob/main/LICENSE).
+
 
 ## <a name="CitingOPS"></a>Citing OPS
 
@@ -66,8 +68,6 @@ If you use OPS in your research, please use the following BibTeX entry.
   year={2023}
 }
 ```
-
-However portions of the project are available under separate license terms: Swin-Transformer-Semantic-Segmentation is licensed under the [MIT license](https://github.com/SwinTransformer/Swin-Transformer-Semantic-Segmentation/blob/main/LICENSE), Deformable-DETR is licensed under the [Apache-2.0 License](https://github.com/fundamentalvision/Deformable-DETR/blob/main/LICENSE).
 
 
 ## Acknowledgement
