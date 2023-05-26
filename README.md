@@ -43,10 +43,12 @@ For a quick start, one can use `demo/5682167295_e61bfbb33e_z.jpg`, an image from
 
 ### Option 2: Inference with RGBA images
 ```
-python predict_part.py CKPT --input IMG_RGBA_1 IMG_RGBA_2
+python predict_part.py CKPT --input IMG_RGBA_1 IMG_RGBA_2 --score-threshold 0.1 --topk 10
 ```
-Output images are located at demo/outputs if not specified. See [predict_part.py](predict_part.py) for more information.
-For a quick start, one can use `demo/5682167295_e61bfbb33e_z_1.png`, a modified RGBA image from COCO.
+Output images are located at `demo/outputs` if not specified. See [predict_part.py](predict_part.py) for more information.
+
+For a quick start, one can use `demo/5682167295_e61bfbb33e_z_1.png`, a modified RGBA image from COCO. Will get the following:
+![](demo/outputs/5682167295_e61bfbb33e_z_1.png)
 
 
 ## Training
