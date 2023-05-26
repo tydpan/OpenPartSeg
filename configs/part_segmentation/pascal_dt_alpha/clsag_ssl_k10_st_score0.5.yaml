@@ -1,0 +1,70 @@
+_BASE_: ../Base-RGBA-COCO-InstanceSegmentation.yaml
+MODEL:
+  WEIGHTS: "outputs/part-imagenet/pascal_dt_alpha/class-agnostic/model_final.pth" #note
+  META_ARCHITECTURE: "MaskFormerPartContrastive" #note
+  ROI_HEADS:
+    SCORE_THRESH_TEST: -1.0
+  SEM_SEG_HEAD:
+    NAME: "MaskFormerHeadPart" #note
+    IGNORE_VALUE: 255
+    NUM_CLASSES: 1 #note
+    LOSS_WEIGHT: 1.0
+    CONVS_DIM: 256
+    MASK_DIM: 256
+    NORM: "GN"
+    # pixel decoder
+    PIXEL_DECODER_NAME: "MSDeformAttnPixelDecoder" #note
+    IN_FEATURES: ["res2", "res3", "res4", "res5"]
+    DEFORMABLE_TRANSFORMER_ENCODER_IN_FEATURES: ["res3", "res4", "res5"]
+    COMMON_STRIDE: 4
+    TRANSFORMER_ENC_LAYERS: 6
+  MASK_FORMER:
+    TRANSFORMER_DECODER_NAME: "MultiScaleMaskedTransformerDecoder"
+    TRANSFORMER_IN_FEATURE: "multi_scale_pixel_decoder"
+    DEEP_SUPERVISION: True
+    NO_OBJECT_WEIGHT: 0.1
+    CLASS_WEIGHT: 2.0
+    MASK_WEIGHT: 5.0
+    DICE_WEIGHT: 5.0
+    HIDDEN_DIM: 256
+    NUM_OBJECT_QUERIES: 100 #note
+    NHEADS: 8
+    DROPOUT: 0.0
+    DIM_FEEDFORWARD: 2048
+    ENC_LAYERS: 0
+    PRE_NORM: False
+    ENFORCE_INPUT_PROJ: False
+    SIZE_DIVISIBILITY: 32
+    DEC_LAYERS: 10  # 9 decoder layers, add one for the loss on learnable query
+    TRAIN_NUM_POINTS: 12544
+    OVERSAMPLE_RATIO: 3.0
+    IMPORTANCE_SAMPLE_RATIO: 0.75
+    TEST:
+      SEMANTIC_ON: False
+      INSTANCE_ON: True
+      PANOPTIC_ON: False
+      OVERLAP_THRESHOLD: 0.8
+      OBJECT_MASK_THRESHOLD: 0.8
+  CONTRASTIVE:  
+    CENTROID_WEIGHT: 10. #note
+    AFFINITY_WEIGHT: 0.5 #note
+    N_CLUSTERS: (10,) #note
+    N_SAMPLE_STYLE: "choice"
+    TAU_AFFINITY: 1.0 #note
+    TAU_CENTROID: 1.0 #note
+DATASETS:
+  TRAIN: ("partpascal58_rgba_alpha0.5_classless_train","partimagenet_rgba_alpha0.5_classless_indomain_train_selftrain_pred_score0.5")
+  TEST: ("partimagenet_rgba_alpha0.5_classless_test",)
+  # TEST: ("partpascal58_rgba_alpha0.5_classless_val",)
+  CONTRASTIVE_TRAIN: ("partimagenet_rgba_alpha0.5_classless_noannos_indomain_train",)
+TEST:
+  EVAL_PERIOD: 1000
+  DETECTIONS_PER_IMAGE: 100 #note
+SOLVER:
+  IMS_PER_BATCH: 16
+  CONTRASTIVE_IMS_PER_BATCH: 16
+  BASE_LR: 0.000001 #note
+  MAX_ITER: 30000 #note
+  CHECKPOINT_PERIOD: 1000
+  # WARMUP_ITERS: 0 #note
+OUTPUT_DIR: outputs/part-imagenet/pascal_dt_alpha/class-agnostic_ssl-k10_st-score0.5
