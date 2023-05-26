@@ -30,28 +30,30 @@ scikit-image==0.20.0
 ## Demo
 
 ### Option 1: Streamlit
-Interacitve mode to draw masks. Need to install streamlit
+Interacitve mode to draw masks. Need to install streamlit.
 ```
 pip install streamlit streamlit-drawable-canvas
 ```
-run
+then run
 ```
 streamlit run predict_part_web.py CKPT
 ```
+For a quick start, one can use `demo/5682167295_e61bfbb33e_z.jpg`, an image from COCO.
 
-### Option 2: 
-run
+
+### Option 2: Inference with RGBA images
 ```
 python predict_part.py CKPT --input IMG_RGBA_1 IMG_RGBA_2
 ```
-Output images are located at demo/outputs if not specified.
+Output images are located at demo/outputs if not specified. See [predict_part.py](predict_part.py) for more information.
+For a quick start, one can use `demo/5682167295_e61bfbb33e_z_1.png`, a modified RGBA image from COCO.
 
 
 ## Training
 ```
 python train_net_part.py --config-file configs/part_segmentation/SETTING --num-gpus N
 ```
-For more command line options, please see [Mask2Former](https://github.com/facebookresearch/Mask2Former).
+For more command line options, please see [Mask2Former](https://github.com/facebookresearch/Mask2Former) and [train_net_part.py](train_net_part.py) for more information.
 
 
 ## License
