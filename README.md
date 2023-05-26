@@ -47,6 +47,13 @@ python predict_part.py CKPT --input IMG_RGBA_1 IMG_RGBA_2
 Output images are located at demo/outputs if not specified.
 
 
+## Training
+```
+python train_net_part.py --config-file configs/part_segmentation/SETTING --num-gpus N
+```
+For more command line options, please see [Mask2Former](https://github.com/facebookresearch/Mask2Former).
+
+
 ## License
 
 Shield: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
