@@ -1,7 +1,7 @@
 # OPS: Towards Open-World Segmentation of Parts (CVPR 2023)
 [Tai-Yu Pan](https://tydpan.github.io/), [Qing Liu](https://qliu24.github.io/), [Wei-Lun Chao](https://sites.google.com/view/wei-lun-harry-chao/home), [Brian Price](https://www.brianpricephd.com/)
 
-[[`BibTeX`](#CitingOPS)]
+[[`BibTeX`](#citing-ops)]
 
 ![](demo/demo.gif)
 
